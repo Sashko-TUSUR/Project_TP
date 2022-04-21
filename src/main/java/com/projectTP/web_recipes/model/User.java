@@ -1,30 +1,31 @@
-package Model;
+package com.projectTP.web_recipes.model;
+
+import org.springframework.data.domain.AfterDomainEventPublication;
 
 import javax.persistence.*;
 
 @Entity
 
 public class User {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-private String Log, Pass, Mail;
-private Long id_role, id_comment, id_recipes;
+    private String Log, Pass, Mail;
+    private Long id_role, id_comment, id_recipes;
 
 
-@ManyToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = "id_role")
-private Role role;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-@ManyToOne(cascade = CascadeType.ALL)
-@JoinColumn(name="id_comment")
-private Comment comment;
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_recipes")
+    @ManyToOne
+    @JoinColumn(name = "recipes_id")
     private Recipes recipes;
-
 
     public Long getId() {
         return id;

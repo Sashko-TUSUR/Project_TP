@@ -1,4 +1,4 @@
-package Model;
+package com.projectTP.web_recipes.model;
 
 import javax.persistence.*;
 

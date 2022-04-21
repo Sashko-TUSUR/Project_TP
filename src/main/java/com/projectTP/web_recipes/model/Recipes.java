@@ -1,5 +1,4 @@
-package Model;
-
+package com.projectTP.web_recipes.model;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,15 +15,10 @@ public class Recipes {
 
     private Long id_ingredient;
 
-   @ManyToMany
+    @ManyToMany
     @JoinTable(name = "comment_recipes", joinColumns = @JoinColumn(name = "id_recipes"),
             inverseJoinColumns = @JoinColumn(name = "id_comment"))
     private Collection<Comment> comments;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_ingredient")
-    private Ingredient ingredient;
-
 
     public Long getId_recipes() {
         return id_recipes;

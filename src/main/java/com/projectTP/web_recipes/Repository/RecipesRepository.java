@@ -1,6 +1,6 @@
-package Repository;
+package com.projectTP.web_recipes.Repository;
 
-import Model.Recipes;
+import com.projectTP.web_recipes.model.Recipes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RecipesRepository extends JpaRepository<Recipes, Long> {

@@ -1,9 +1,7 @@
-package Repository;
+package com.projectTP.web_recipes.Repository;
 
-import Model.Comment;
-
+import com.projectTP.web_recipes.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
