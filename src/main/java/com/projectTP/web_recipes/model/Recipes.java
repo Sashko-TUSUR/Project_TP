@@ -14,6 +14,15 @@ public class Recipes {
     private String recipes, type_food, name, comment;
 
     private Long id_ingredient;
+    private Boolean approved;
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
 
     @ManyToMany
     @JoinTable(name = "comment_recipes", joinColumns = @JoinColumn(name = "id_recipes"),
