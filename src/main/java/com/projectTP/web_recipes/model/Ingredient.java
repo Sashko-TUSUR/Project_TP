@@ -12,17 +12,6 @@ public class Ingredient {
 
     private String name, type;
 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
-
-    public Long getId_ingredient() {
-        return id;
-    }
-
-    public void setId_ingredient(Long id_ingredient) {
-        this.id = id_ingredient;
-    }
 
     public String getName() {
         return name;

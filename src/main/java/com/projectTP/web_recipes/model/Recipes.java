@@ -11,23 +11,24 @@ public class Recipes {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_recipes;
 
-    private String recipes, type_food, name, comment;
+    private String recipes, name, comment;
 
-    private Long id_ingredient;
     private Boolean approved;
 
-    public Boolean getApproved() {
-        return approved;
-    }
 
-    public void setApproved(Boolean approved) {
-        this.approved = approved;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_ingredient")
+    private Ingredient ingredient;
+
+    @ManyToOne
+    @JoinColumn(name = "id_typeFood")
+    private TypeFood typeFood;
 
     @ManyToMany
     @JoinTable(name = "comment_recipes", joinColumns = @JoinColumn(name = "id_recipes"),
             inverseJoinColumns = @JoinColumn(name = "id_comment"))
     private Collection<Comment> comments;
+
 
     public Long getId_recipes() {
         return id_recipes;
@@ -45,12 +46,12 @@ public class Recipes {
         this.recipes = recipes;
     }
 
-    public String getType_food() {
-        return type_food;
+    public TypeFood getTypeFood() {
+        return typeFood;
     }
 
-    public void setType_food(String type_food) {
-        this.type_food = type_food;
+    public void setTypeFood(TypeFood typeFood) {
+        this.typeFood = typeFood;
     }
 
     public String getName() {
@@ -69,11 +70,27 @@ public class Recipes {
         this.comment = comment;
     }
 
-    public Long getId_ingredient() {
-        return id_ingredient;
+    public Boolean getApproved() {
+        return approved;
     }
 
-    public void setId_ingredient(Long id_ingredient) {
-        this.id_ingredient = id_ingredient;
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 }

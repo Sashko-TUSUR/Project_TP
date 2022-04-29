@@ -1,6 +1,6 @@
 package com.projectTP.web_recipes.model;
 
-import org.springframework.data.domain.AfterDomainEventPublication;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
@@ -11,21 +11,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String Log, Pass, Mail;
-    private Long id_role, id_comment, id_recipes;
+    @Column(length=32, unique=false)
+    @Length(min =2,max =32)
+    private String Log;
 
+    @Column(length=32, unique=false)
+    @Length(min = 6,max =32)
+    private String  Pass;
+
+    private String Mail;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "id_role")
     private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id")
+    @JoinColumn(name = "id_comment")
     private Comment comment;
 
     @ManyToOne
-    @JoinColumn(name = "recipes_id")
+    @JoinColumn(name = "id_recipes")
     private Recipes recipes;
+
 
     public Long getId() {
         return id;
@@ -59,31 +66,27 @@ public class User {
         Mail = mail;
     }
 
-    public Long getId_role() {
-        return id_role;
+    public Role getRole() {
+        return role;
     }
 
-    public void setId_role(Long id_role) {
-        this.id_role = id_role;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public Long getId_comment() {
-        return id_comment;
+    public Comment getComment() {
+        return comment;
     }
 
-    public void setId_comment(Long id_comment) {
-        this.id_comment = id_comment;
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
-    public Long getId_recipes() {
-        return id_recipes;
+    public Recipes getRecipes() {
+        return recipes;
     }
 
-    public void setId_recipes(Long id_recipes) {
-        this.id_recipes = id_recipes;
+    public void setRecipes(Recipes recipes) {
+        this.recipes = recipes;
     }
-
-
-
-
 }
