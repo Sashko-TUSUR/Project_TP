@@ -15,6 +15,13 @@ public class Recipes {
 
     private Boolean approved;
 
+    private float quantity;
+    private String measureUnit;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_ingredient")
@@ -72,6 +79,30 @@ public class Recipes {
 
     public Boolean getApproved() {
         return approved;
+    }
+
+    public float getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(float quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getMeasureUnit() {
+        return measureUnit;
+    }
+
+    public void setMeasureUnit(String measureUnit) {
+        this.measureUnit = measureUnit;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setApproved(Boolean approved) {

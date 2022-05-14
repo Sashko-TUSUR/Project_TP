@@ -25,15 +25,6 @@ public class User {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    @ManyToOne
-    @JoinColumn(name = "id_comment")
-    private Comment comment;
-
-    @ManyToOne
-    @JoinColumn(name = "id_recipes")
-    private Recipes recipes;
-
-
     public Long getId() {
         return id;
     }
@@ -74,19 +65,5 @@ public class User {
         this.role = role;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
 
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
-
-    public Recipes getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Recipes recipes) {
-        this.recipes = recipes;
-    }
 }
