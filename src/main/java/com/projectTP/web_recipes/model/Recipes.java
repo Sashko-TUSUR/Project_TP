@@ -13,7 +13,7 @@ public class Recipes {
 
     private String recipes, name, comment;
 
-    private Boolean approved;
+    private Boolean approved=false;
 
     private float quantity;
     private String measureUnit;
@@ -123,5 +123,17 @@ public class Recipes {
 
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Recipes(String recipes, String name, float quantity, String measureUnit, Ingredient ingredient, TypeFood typeFood) {
+        this.recipes = recipes;
+        this.name = name;
+        this.quantity = quantity;
+        this.measureUnit = measureUnit;
+        this.ingredient = ingredient;
+        this.typeFood = typeFood;
+    }
+
+    public Recipes(String recipes, String name, String ingredient, String typeFood, String measureUnit, float quantity) {
     }
 }

@@ -36,7 +36,11 @@ private User user;
         return id_comment;
         }
 
-public void setId_comment(Long id_comment) {
+        public Comment(String comment) {
+                this.comment = comment;
+        }
+
+        public void setId_comment(Long id_comment) {
         this.id_comment = id_comment;
         }
 
@@ -47,4 +51,7 @@ public String getComment() {
 public void setComment(String comment) {
         this.comment = comment;
         }
+
+        public Comment() {
         }
+}

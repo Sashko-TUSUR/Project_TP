@@ -26,4 +26,11 @@ public class TypeFood {
     public void setName(String name) {
         this.name = name;
     }
+
+    public TypeFood(String name) {
+        this.name = name;
+    }
+
+    public TypeFood() {
+    }
 }

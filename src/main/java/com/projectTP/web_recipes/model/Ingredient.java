@@ -12,6 +12,13 @@ public class Ingredient {
 
     private String name, type;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -26,6 +33,11 @@ public class Ingredient {
     }
 
     public void setType(String type) {
+        this.type = type;
+    }
+
+    public Ingredient(String name, String type) {
+        this.name = name;
         this.type = type;
     }
 }
