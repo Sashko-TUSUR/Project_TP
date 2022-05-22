@@ -2,6 +2,7 @@ package com.projectTP.web_recipes.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,15 +20,15 @@ public class Recipes {
     private String measureUnit;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_ingredient")
     private Ingredient ingredient;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_typeFood")
     private TypeFood typeFood;
 
@@ -35,6 +36,9 @@ public class Recipes {
     @JoinTable(name = "comment_recipes", joinColumns = @JoinColumn(name = "id_recipes"),
             inverseJoinColumns = @JoinColumn(name = "id_comment"))
     private Collection<Comment> comments;
+
+    public Recipes(String recipes, String name, String ingredient, String typeFood, String measureUnit, float quantity) {
+    }
 
 
     public Long getId_recipes() {
@@ -53,13 +57,6 @@ public class Recipes {
         this.recipes = recipes;
     }
 
-    public TypeFood getTypeFood() {
-        return typeFood;
-    }
-
-    public void setTypeFood(TypeFood typeFood) {
-        this.typeFood = typeFood;
-    }
 
     public String getName() {
         return name;
@@ -109,13 +106,6 @@ public class Recipes {
         this.approved = approved;
     }
 
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
 
     public Collection<Comment> getComments() {
         return comments;
@@ -125,15 +115,20 @@ public class Recipes {
         this.comments = comments;
     }
 
-    public Recipes(String recipes, String name, float quantity, String measureUnit, Ingredient ingredient, TypeFood typeFood) {
-        this.recipes = recipes;
-        this.name = name;
-        this.quantity = quantity;
-        this.measureUnit = measureUnit;
-        this.ingredient = ingredient;
-        this.typeFood = typeFood;
+    public Ingredient getIngredient() {
+        return ingredient;
     }
 
-    public Recipes(String recipes, String name, String ingredient, String typeFood, String measureUnit, float quantity) {
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
     }
+
+    public TypeFood getTypeFood() {
+        return typeFood;
+    }
+
+    public void setTypeFood(TypeFood typeFood) {
+        this.typeFood = typeFood;
+    }
+    
 }
