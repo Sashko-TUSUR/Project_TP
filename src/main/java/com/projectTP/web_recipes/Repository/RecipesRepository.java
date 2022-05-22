@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface RecipesRepository extends JpaRepository<Recipes, Long>, JpaSpecificationExecutor<Recipes> {
+public interface RecipesRepository extends JpaRepository<Recipes, Long>, RecipesRepositoryRequest {
+
+
     List<Recipes> findByName(String name);
-
-
 
     //все рецепты
    @Query(value = "Select * From Recipes u WHERE u.typeFood ='салат'",

@@ -2,6 +2,8 @@ package com.projectTP.web_recipes.model;
 
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 @Entity
 
@@ -11,6 +13,18 @@ public class Ingredient {
     private Long id;
 
     private String name, type;
+
+
+    @OneToMany(mappedBy = "ingredient")
+    private List<Recipes> recipes;
+
+    public List<Recipes> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipes> recipes) {
+        this.recipes = recipes;
+    }
 
     public Long getId() {
         return id;
@@ -36,8 +50,12 @@ public class Ingredient {
         this.type = type;
     }
 
+    public Ingredient() {
+    }
+
     public Ingredient(String name, String type) {
         this.name = name;
         this.type = type;
     }
+
 }
