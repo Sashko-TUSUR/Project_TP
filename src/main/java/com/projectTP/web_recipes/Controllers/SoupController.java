@@ -14,33 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/soup")
 public class SoupController {
-        @Autowired
-        private RecipesRepository recipesRepository;
-         @Autowired
-         private CommentRepository commentRepository;
 
-    //(динамический запрос надо сделать)
-        @PostMapping("/recipes")
-        public ResponseEntity<?> Recipes(Model model)
-        {
-
-            return null;
-        }
-
-    //сам рецепт и комментарии к нему
-    @GetMapping("/recipe/{name}")
-    public ResponseEntity<?> Recipe(@PathVariable(value = "name") String name,Model model){
-        recipesRepository.findByName(name);
-       // model.addAttribute("comment",commentRepository.findAll());
-        return null;
-    }
-    // добавление отзыва
-    @PostMapping("/recipe/{name}")
-    public ResponseEntity<?> CommentAdd(@RequestParam String comment,@PathVariable(value = "name") String name){
-        recipesRepository.findByName(name);
-        Comment com = new Comment(comment);
-        commentRepository.save(com);
-        return null;
-    }
 
 }

@@ -1,9 +1,14 @@
 package com.projectTP.web_recipes.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 
 public class User {
@@ -25,45 +30,6 @@ public class User {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLog() {
-        return Log;
-    }
-
-    public void setLog(String log) {
-        Log = log;
-    }
-
-    public String getPass() {
-        return Pass;
-    }
-
-    public void setPass(String pass) {
-        Pass = pass;
-    }
-
-    public String getMail() {
-        return Mail;
-    }
-
-    public void setMail(String mail) {
-        Mail = mail;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
 
 }

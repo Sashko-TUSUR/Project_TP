@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +13,18 @@ import java.util.Optional;
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
 
-
-    @Query(value = "SELECT s.name FROM Ingredient s WHERE s.type = 'мясо'")
+    @Query(value = "SELECT *FROM Ingredient",
+    nativeQuery = true)
     List<Ingredient> findByMeat();
 
-    @Query(value = "SELECT s.name FROM Ingredient s WHERE s.type = 'овощь'")
+    @Query(value = "SELECT * FROM Ingredient WHERE type = 'овощь'",
+            nativeQuery = true)
     List<Ingredient> findByVegetable();
 
-    @Query(value = "SELECT s.name FROM Ingredient s WHERE s.type = 'другое'")
+    @Query(value = "SELECT * FROM Ingredient WHERE type = 'другое'",
+            nativeQuery = true)
     List<Ingredient> findByOther();
+
 
 
 }
