@@ -1,11 +1,13 @@
 package com.projectTP.web_recipes.Controllers;
 
 import com.projectTP.web_recipes.Repository.CommentRepository;
+import com.projectTP.web_recipes.Repository.IngredientRepository;
 import com.projectTP.web_recipes.Repository.RecipesRepository;
 import com.projectTP.web_recipes.model.Comment;
 import com.projectTP.web_recipes.model.Ingredient;
 import com.projectTP.web_recipes.model.Recipes;
 import com.projectTP.web_recipes.payload.IngredientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,25 +21,21 @@ import java.util.Set;
 
 public class SaladController {
 
-    private CommentRepository commentRepository;
-    private RecipesRepository recipesRepository;
-    private IngredientResponse ingredientResponse;
-    public SaladController(RecipesRepository recipesRepository) {
-        this.recipesRepository = recipesRepository;
-    }
+    @Autowired RecipesRepository recipesRepository;
+    @Autowired IngredientRepository ingredientRepository;
+    @Autowired CommentRepository commentRepository;
 
-    public SaladController(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
+    public SaladController() {
     }
-
 
     //принимаю ингридиенты для запроса
-    @PostMapping("/recipes")
-    @GetMapping
+
+
+  @PostMapping("/recipes")
     public List<Ingredient> Recipes(@RequestBody List<String> ingredient)
     {
         Set<String> ingredients = new HashSet<>(ingredient);
-        return  recipesRepository.findByIngredientIn(ingredients);
+        return  recipesRepository.findIngredientsIn(ingredients);
 
     }
 

@@ -5,6 +5,6 @@ import com.projectTP.web_recipes.model.Ingredient;
 import java.util.List;
 import java.util.Set;
 
-public interface RecipesRepositoryRequest {
-    List<Ingredient> findByIngredientIn(Set<String> ingredients);
+public interface UserIngredientRequest {
+    List<Ingredient> findIngredientsIn(Set<String> ingredients);
 }

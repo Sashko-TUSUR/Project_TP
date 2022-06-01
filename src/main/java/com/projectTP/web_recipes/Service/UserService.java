@@ -12,17 +12,4 @@ import java.util.List;
 public class UserService {
 
 
-    private IngredientRepository ingredientRepository;
-
-    public UserService(IngredientRepository ingredientRepository) {
-        this.ingredientRepository = ingredientRepository;
-    }
-
-    public List<Ingredient> selectMeat()
-    {
-        return ingredientRepository.findByMeat();
-    }
-
-
-
 }

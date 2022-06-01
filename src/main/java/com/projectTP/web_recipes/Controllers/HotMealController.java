@@ -1,14 +1,8 @@
 package com.projectTP.web_recipes.Controllers;
 
-import com.projectTP.web_recipes.Repository.CommentRepository;
-import com.projectTP.web_recipes.Repository.IngredientRepository;
-import com.projectTP.web_recipes.Repository.RecipesRepository;
-import com.projectTP.web_recipes.model.Comment;
 import com.projectTP.web_recipes.payload.СonstructorParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,13 +10,5 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/HotMeal")
 public class HotMealController {
 
-    @Autowired
-    СonstructorParam сonstructorParam;
-
-    @GetMapping ("")
-    public Object randNumber()
-    {
-        return сonstructorParam.something();
-    }
 
 }

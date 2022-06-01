@@ -1,7 +1,9 @@
 package com.projectTP.web_recipes.Service;
 
-import com.projectTP.web_recipes.Repository.RecipesRepositoryRequest;
+
+import com.projectTP.web_recipes.Repository.UserIngredientRequest;
 import com.projectTP.web_recipes.model.Ingredient;
+import com.projectTP.web_recipes.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class RecipesRepositoryRequestImpl implements RecipesRepositoryRequest {
+public class RecipesRepositoryImpl implements UserIngredientRequest {
 
-   @PersistenceContext
+    @PersistenceContext
     private EntityManager entityManager;
 
 
     @Override
-    public List<Ingredient> findByIngredientIn(Set<String> ingredients)  {
+    public List<Ingredient> findIngredientsIn(Set<String> ingredients) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Ingredient> query = cb.createQuery(Ingredient.class);
         Root<Ingredient> ingredient = query.from(Ingredient.class);
@@ -25,7 +27,7 @@ public class RecipesRepositoryRequestImpl implements RecipesRepositoryRequest {
         Path<String> ingredientPath = ingredient.get("name");
 
         List<Predicate> predicates = new ArrayList<>();
-        for (String name : ingredients) {
+        for ( String name : ingredients) {
             predicates.add(cb.like(ingredientPath, name));
         }
         query.select(ingredient)
@@ -35,7 +37,4 @@ public class RecipesRepositoryRequestImpl implements RecipesRepositoryRequest {
                 .getResultList();
     }
 
-
-
 }
-
