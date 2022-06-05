@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
@@ -21,31 +20,37 @@ public class Recipes {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_recipes;
 
-    private String recipes, name, comment;
+    @Lob
+    private String recipes;
+    private String     name, comment;
 
     private Boolean approved=false;
+    
+    @Lob
+    private Byte[] image;
 
-    private float quantity;
-    private String measureUnit;
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_typeFood")
     private TypeFood typeFood;
 
     @ManyToMany
-    @JoinTable(name = "recipes_ingredients", joinColumns = @JoinColumn(name = "recipes_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredients_id"))
-    @JsonIgnore
+    @JoinTable(name = "recipes_ingredients", joinColumns = @JoinColumn(name = "id_recipes"),
+            inverseJoinColumns = @JoinColumn(name = "id_ingredient"))
             private List<Ingredient> ingredients;
 
-    public Recipes(String recipe, String name, String ingredients, String typeFood, String measureUnit, float quantity) {
+
+    public Recipes(String name) {
+
+        this.name = name;
+
     }
+
 
 
 }

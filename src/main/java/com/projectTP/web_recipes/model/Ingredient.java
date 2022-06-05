@@ -25,7 +25,7 @@ public class Ingredient {
     private String name;
     private String type;
 
-    @ManyToMany(mappedBy = "ingredients")
+    @ManyToMany(mappedBy = "ingredients",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Recipes> recipesSet;
 
